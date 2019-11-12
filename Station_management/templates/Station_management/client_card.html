@@ -1,0 +1,31 @@
+{% extends 'Station_management/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="window">
+        <table class="cars-table">
+            <caption>{{client.first_name}} {{client.last_name}}'s cars</caption>
+                <thead class="cars-table-head">
+                  <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>VIN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for car in client_cars %}
+                        <tr>
+                            <td>{{ car.make }}</td>
+                            <td>{{ car.car_model }}</td>
+                            <td>{{ car.year }}</td>
+                            <td>{{ car.vin }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <a href="{% url "Station_management:main" %}" class="registration_button homepage-button">
+            <div>Homepage</div>
+        </a>
+    </div>
+{% endblock %}

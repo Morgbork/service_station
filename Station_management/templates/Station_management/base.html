@@ -1,0 +1,20 @@
+{% extends 'Station_management/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="window">
+        <div>
+            <p>
+                Check among registered clients
+            </p>
+        </div>
+        <form action="{% url "Station_management:search" %}" method="post" class="search_form">
+            {% csrf_token %}
+            {{form.search_field}}
+            <input type="submit" value="Check">
+        </form>
+        <a class="registration_button" href="{% url "Station_management:registration" %}">
+            <div>New client registration</div>
+        </a>
+    </div>
+{% endblock %}

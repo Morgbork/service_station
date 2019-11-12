@@ -1,0 +1,16 @@
+{% extends 'Station_management/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="overlay-clients">
+        <h2>Search results:</h2>
+        {% for result in search_result %}
+            <li class="search-result-option">
+                <a href="{{result.get_absolute_url}}">{{result.first_name}} {{result.last_name}} (Phone number: {{result.phone}})</a>
+            </li>
+        {% endfor %}
+        <a href="{% url "Station_management:main" %}" class="registration_button homepage-button centration">
+            <div>Homepage</div>
+        </a>
+    </div>
+{% endblock %}

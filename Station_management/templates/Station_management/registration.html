@@ -1,0 +1,25 @@
+{% extends 'Station_management/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="window">
+        <form action="{% url "Station_management:registration_procedure" %}" method="post" class="reg_form">
+            {% csrf_token %}
+            {% for field in form %}
+                <li class="form-field-item">
+                    <span>{{field.label}}</span>
+                    {%if form.errors %}
+                        {% for error in field.errors %}
+                            <div class="form-error-message">{{error}}</div>
+                        {% endfor %}
+                    {% endif %}
+                </li>
+                <li >{{field}}</li>
+            {% endfor %}
+            <li class="form-field-item"><input type="submit" value="Register"></li>
+        </form>
+        <a href="{% url "Station_management:main" %}" class="registration_button homepage-button">
+            <div>Homepage</div>
+        </a>
+    </div>
+{% endblock %}
